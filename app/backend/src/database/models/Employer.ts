@@ -3,14 +3,14 @@ import * as config from "../../config/database";
 
 const sequelize = new Sequelize(config)
 
-class Users extends Model {
+class Employer extends Model {
   id!: number;
   name!: string;
   age!: string;
   role!: string;
 }
 
-Users.init({
+Employer.init({
   id: {
     type: INTEGER,
     allowNull: false,
@@ -35,5 +35,5 @@ Users.init({
   timestamps: false,
 });
 
-export default Users;
+export default Employer;
 
