@@ -1,6 +1,5 @@
 import employerModel from '../database/models/Employer';
 
-
 const getAllEmployers = async () => {
   
     const data = await employerModel.findAll();
