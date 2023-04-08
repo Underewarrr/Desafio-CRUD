@@ -7,8 +7,17 @@ const getAllEmployers = async (req: Request, res: Response) => {
    
     const { type, message, code, data } = await employer.getAllEmployers();
 
-    return res.status(code).json({ message, type, data });
+    return res.status(code).json({ message, type, data }); 
 };
 
+const getEmployerByid = async (req: Request, res: Response) => {
 
- export default { getAllEmployers };
+    const {id} = req.body
+
+    const { type, message, code, data } = await employer.getEmployerByid(id);
+
+    return res.status(code).json({ message, type, data }); 
+
+}
+
+ export default { getAllEmployers, getEmployerByid };
