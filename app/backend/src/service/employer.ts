@@ -12,8 +12,9 @@ const getEmployerByid = async (id: number) => {
   const data = await employerModel.findOne({ where: { id } });
 
   if (!data) {
-  return { code: 404, type: 'NOT_FOUND', message: 'Employer not found' };
+    return { code: 404, type: 'NOT_FOUND', message: 'Employer not found' };
   }
   return { code: 200, type: 'SUCCESS', message: 'One employer have benn listed by request', data };
 }
+
   export default { getAllEmployers, getEmployerByid };

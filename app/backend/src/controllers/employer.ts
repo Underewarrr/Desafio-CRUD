@@ -8,6 +8,7 @@ const getAllEmployers = async (req: Request, res: Response) => {
     const { type, message, code, data } = await employer.getAllEmployers();
 
     return res.status(code).json({ message, type, data }); 
+    
 };
 
 const getEmployerByid = async (req: Request, res: Response) => {

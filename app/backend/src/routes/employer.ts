@@ -8,6 +8,4 @@ employerRoute.get('/get-all', employerController.getAllEmployers);
 
 employerRoute.get('/get-one', employerController.getEmployerByid);
 
-
-
 export default employerRoute;
