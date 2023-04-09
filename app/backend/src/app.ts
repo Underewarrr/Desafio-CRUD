@@ -11,6 +11,7 @@ class App {
 
     this.app.get('/', (req, res) => res.json({ ok: true }));
     this.app.use('/api/employers/', employerRoute)
+  
     
   }
 

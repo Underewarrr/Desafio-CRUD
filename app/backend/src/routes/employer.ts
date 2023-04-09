@@ -8,4 +8,7 @@ employerRoute.get('/get-all', employerController.getAllEmployers);
 
 employerRoute.get('/get-one', employerController.getEmployerByid);
 
+employerRoute.post('/create', employerController.registerEmployer);
+
+
 export default employerRoute;
