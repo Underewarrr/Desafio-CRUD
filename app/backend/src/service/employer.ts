@@ -5,6 +5,7 @@ const getAllEmployers = async () => {
   const data = await employerModel.findAll();
     
   return { code: 202, type: 'SUCCESS', message: 'All employers have benn listed by request', data };
+
 }
 
 const getEmployerByid = async (id: number) => {
@@ -14,15 +15,17 @@ const getEmployerByid = async (id: number) => {
   if (!data) {
     return { code: 404, type: 'NOT_FOUND', message: 'Employer not found' };
   }
+
   return { code: 202, type: 'SUCCESS', message: 'One employer have benn listed by request', data };
+
 }
 
 const registerEmployer = async (name: string, age: number) => {
 
 
-  const employerExist = await employerModel.findOne({ where: { name } });
+  const employer = await employerModel.findOne({ where: { name } });
 
-  if (employerExist) {
+  if (employer) {
     return { code: 409, type: 'ALREADY_EXIST', message: 'Name used for employer already in use' }
   }
 
@@ -33,6 +36,29 @@ const registerEmployer = async (name: string, age: number) => {
   });
 
   return { code: 201, type: 'SUCCESS', message: 'New Employerd added with success', data };
+
 }
 
-  export default { getAllEmployers, getEmployerByid, registerEmployer };
+const editEmployer = async (id:number, name: string, age:number ) => {
+
+  const employer = await employerModel.findOne({ where: { id } });
+
+  if (!employer) {
+    return { code: 409, type: 'NOT_FOUND', message: 'Employer Not found' }
+  }
+
+  const data = await employerModel.update(
+    {
+      name,
+      age,
+    },
+    {
+      where: { id: id }
+    }
+  );
+
+  return { code: 201, type: 'SUCCESS', message: 'New Employerd edited with success', data };
+
+}
+
+  export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer };

@@ -31,6 +31,16 @@ const registerEmployer = async (req: Request, res: Response) => {
 
 }
 
+const editEmployer  = async (req: Request, res: Response) => {
+
+    const {name, id, age} = req.body
+
+    const { type, message, code, data } = await employer.editEmployer(id, name, age)
+
+    return res.status(code).json({ message, type, data }); 
+
+}
 
 
- export default { getAllEmployers, getEmployerByid, registerEmployer };
+
+ export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer };

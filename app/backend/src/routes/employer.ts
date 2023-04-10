@@ -10,5 +10,7 @@ employerRoute.get('/get-one', employerController.getEmployerByid);
 
 employerRoute.post('/create', employerController.registerEmployer);
 
+employerRoute.patch('/edit', employerController.editEmployer);
+
 
 export default employerRoute;
