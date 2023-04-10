@@ -41,6 +41,15 @@ const editEmployer  = async (req: Request, res: Response) => {
 
 }
 
+const deleteEmployer  = async (req: Request, res: Response) => {
+
+    const {id} = req.body
+
+    const { type, message, code, data } = await employer.deleteEmployer(id)
+
+    return res.status(code).json({ message, type, data }); 
+
+}
 
 
- export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer };
+ export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer, deleteEmployer };

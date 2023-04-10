@@ -12,5 +12,8 @@ employerRoute.post('/create', employerController.registerEmployer);
 
 employerRoute.patch('/edit', employerController.editEmployer);
 
+employerRoute.delete('/delete', employerController.deleteEmployer);
+
+
 
 export default employerRoute;

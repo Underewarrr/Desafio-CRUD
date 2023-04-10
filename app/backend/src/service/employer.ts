@@ -44,7 +44,7 @@ const editEmployer = async (id:number, name: string, age:number ) => {
   const employer = await employerModel.findOne({ where: { id } });
 
   if (!employer) {
-    return { code: 409, type: 'NOT_FOUND', message: 'Employer Not found' }
+    return { code: 404, type: 'NOT_FOUND', message: 'Employer Not found' }
   }
 
   const data = await employerModel.update(
@@ -61,4 +61,22 @@ const editEmployer = async (id:number, name: string, age:number ) => {
 
 }
 
-  export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer };
+const deleteEmployer = async (id:number) => {
+
+  const employer = await employerModel.findOne({ where: { id } });
+ 
+  if (!employer) {
+    return { code: 404, type: 'NOT_FOUND', message: 'Employer Not found' }
+  }
+
+  const data = await employerModel.destroy({
+    where: {
+       id: id //this will be your id that you want to delete
+    }
+ })
+
+ return { code: 201, type: 'SUCCESS', message: 'New Employerd deleted with success', data };
+
+}
+
+  export default { getAllEmployers, getEmployerByid, registerEmployer, editEmployer, deleteEmployer };
